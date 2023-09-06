@@ -1,19 +1,19 @@
 export class Router {
 
   add(routeName, page) {
-    this.routes[routeName] = page
+    this.route[routeName] = page
   }
 
   route(event) {
     event = event || window.event
-    ev.preventDefault()
+    event.preventDefault()
     window.history.pushState({}, "", event.target.href)
     this.handle()
   }
 
   handle() {
     const { pathname } = window.location
-    const route = this.routes[pathname] || this.routes[404]
+    const route = this.route[pathname] || this.routes[404]
 
     fetch(route)
       .then(data => data.text())
